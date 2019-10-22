@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FirstKotlinApp</string>
+    <string name="submit">Create Task</string>
+
+</resources>
