@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val addTask: View = findViewById(R.id.addTask)
+        val addTask: View = findViewById(R.id.addTask)//адекватно ли определять кнопку здесь, можно и нужно ли выносить её и её определение в отдельный класс
         addTask.setOnClickListener { view ->
             Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
