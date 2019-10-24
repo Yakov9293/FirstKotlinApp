@@ -1,10 +1,7 @@
 package com.example.firstkotlinapp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,13 +9,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val transaction = supportFragmentManager.beginTransaction()
 
+        val listOfTasks = supportFragmentManager.findFragmentByTag("LIST_OF_TASK") as? ListOfTasks
+            ?: ListOfTasks()
 
-        val addTask: View = findViewById(R.id.addTask)//адекватно ли определять кнопку здесь, можно и нужно ли выносить её и её определение в отдельный класс
-        addTask.setOnClickListener { view ->
-            Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .show()
-        }
+        transaction.replace(R.id.frame_content, listOfTasks, "LIST_OF_TASK")
+        transaction.addToBackStack(null)
+        transaction.commit()
+
     }
+
+
 }
